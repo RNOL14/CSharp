@@ -1,0 +1,2 @@
+﻿using AttendanceTracker;
+Attendance.Run();
