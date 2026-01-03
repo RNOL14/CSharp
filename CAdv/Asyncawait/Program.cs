@@ -6,7 +6,7 @@ class Program
 {
   static async Task Main()
   {
-    await BasicAsync.Run();
+    // await BasicAsync.Run();
 
     int number = await AsyncWithReturn.GetNumberAsync();
     Console.WriteLine("Returned value: " + number);

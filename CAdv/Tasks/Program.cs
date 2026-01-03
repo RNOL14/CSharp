@@ -6,7 +6,7 @@ class Program
 {
   static async Task Main()
   {
-    await TaskRun.Run();
+    // await TaskRun.Run();
 
     int result = await TaskReturn.CalculateSumAsync();
     Console.WriteLine("Calculated Sum: " + result);

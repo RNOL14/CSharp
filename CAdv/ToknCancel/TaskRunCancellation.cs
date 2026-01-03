@@ -20,7 +20,7 @@ namespace AsyncTaskPractice
         }
       }, cts.Token);
 
-      await Task.Delay(2500);
+      await Task.Delay(4000);
       cts.Cancel();
 
       try
