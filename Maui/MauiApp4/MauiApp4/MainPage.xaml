@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp4.MainPage">
+
+    <ScrollView>
+        <Grid Padding="20"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+              ColumnDefinitions="Auto,*"
+              RowSpacing="15"
+              ColumnSpacing="10">
+
+            <!-- Title -->
+            <Label Text="Login"
+                   Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+            <!-- Username -->
+            <Label Text="Username"
+                   Grid.Row="1"
+                   Grid.Column="0"/>
+
+            <Entry Placeholder="Enter username"
+                   Grid.Row="1"
+                   Grid.Column="1"/>
+
+            <!-- Password -->
+            <Label Text="Password"
+                   Grid.Row="2"
+                   Grid.Column="0"/>
+
+            <Entry Placeholder="Enter password"
+                   IsPassword="True"
+                   Grid.Row="2"
+                   Grid.Column="1"/>
+
+            <!-- FlexLayout Example -->
+            <FlexLayout Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Direction="Row"
+                        JustifyContent="SpaceBetween">
+
+                <HorizontalStackLayout>
+                    <CheckBox/>
+                    <Label Text="Remember me"/>
+                </HorizontalStackLayout>
+
+                <Label Text="Forgot password?"
+                       TextColor="Blue"/>
+            </FlexLayout>
+
+            <!-- Buttons -->
+            <VerticalStackLayout Grid.Row="4"
+                                 Grid.ColumnSpan="2"
+                                 Spacing="10">
+
+                <Button Text="Login"
+                        Clicked="OnLoginClicked"/>
+
+                <Button Text="Sign Up"
+                        Clicked="OnSignUpClicked"/>
+            </VerticalStackLayout>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
