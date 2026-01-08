@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiApp6.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:MauiApp6.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:TripBookingViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20"
+                Spacing="20">
+
+            <Label Text="Trip Booking"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+            <!-- Frame -->
+            <Frame BorderColor="LightGray"
+                   CornerRadius="10"
+                   Padding="15">
+
+                <VerticalStackLayout Spacing="15">
+
+                    <!-- Destination -->
+                    <Label Text="Destination"/>
+                    <Entry Placeholder="Enter destination"
+                           Text="{Binding Destination}"/>
+
+                    <!-- Radio Buttons -->
+                    <Label Text="Travel Type"/>
+                    <HorizontalStackLayout>
+                        <RadioButton Content="One Way"
+                                     GroupName="Trip"
+                                     CheckedChanged="(_,__) => {}"
+                                     IsChecked="{Binding TravelType, Mode=TwoWay}"/>
+                        <RadioButton Content="Round Trip"
+                                     GroupName="Trip"/>
+                    </HorizontalStackLayout>
+
+                    <!-- Date Picker -->
+                    <Label Text="Travel Date"/>
+                    <DatePicker Date="{Binding TravelDate}"/>
+
+                    <!-- Picker -->
+                    <Label Text="Transport Mode"/>
+                    <Picker Title="Select transport"
+                            SelectedItem="{Binding Transport}">
+                        <Picker.Items>
+                            <x:String>Bus</x:String>
+                            <x:String>Train</x:String>
+                            <x:String>Flight</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <!-- Switch -->
+                    <HorizontalStackLayout>
+                        <Label Text="Travel Insurance"
+                               VerticalOptions="Center"/>
+                        <Switch IsToggled="{Binding Insurance}"/>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Button -->
+            <Button Text="Book Trip"
+                    Command="{Binding BookCommand}"
+                    BackgroundColor="#512BD4"
+                    TextColor="White"
+                    CornerRadius="8"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
