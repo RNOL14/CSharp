@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp5.MainPage">
+    <ScrollView>
+        <VerticalStackLayout Padding="20"
+                Spacing="20">
+
+            <!-- Page Title -->
+            <Label
+                Text="User Preferences"
+                FontSize="26"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"/>
+
+            <!-- Border Example -->
+            <Border Stroke="Gray"
+                    StrokeThickness="1"
+                    Padding="15">
+                <VerticalStackLayout Spacing="15">
+
+                    <!-- Name -->
+                    <Label Text="Your Name"/>
+                    <Entry x:Name="NameEntry"
+                            Placeholder="Enter name"/>
+
+                    <!-- Switch -->
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Enable Notifications"
+                                VerticalOptions="Center"/>
+                        <Switch x:Name="NotifySwitch"/>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Frame Example -->
+            <Frame BorderColor="LightGray"
+                    Padding="15">
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="Select Gender"
+                            FontAttributes="Bold"/>
+
+                    <RadioButton x:Name="MaleRadio"
+                            Content="Male"
+                            GroupName="Gender"/>
+                    <RadioButton x:Name="FemaleRadio"
+                            Content="Female"
+                            GroupName="Gender"/>
+                    <RadioButton x:Name="OtherRadio"
+                            Content="Other"
+                            GroupName="Gender"/>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Grid Example -->
+            <Grid ColumnDefinitions="*,*"
+                  RowDefinitions="Auto,Auto"
+                  ColumnSpacing="15"
+                  RowSpacing="10">
+
+                <Label Text="Date"
+                        Grid.Row="0"
+                        Grid.Column="0"/>
+                <Label Text="Time"
+                        Grid.Row="0"
+                        Grid.Column="1"/>
+
+                <DatePicker x:Name="DatePicker"
+                            Grid.Row="1"
+                            Grid.Column="0"/>
+
+                <TimePicker x:Name="TimePicker"
+                            Grid.Row="1"
+                            Grid.Column="1"/>
+            </Grid>
+
+            <!-- Dropdown -->
+            <Label Text="Preferred Language"/>
+            <Picker x:Name="LanguagePicker"
+                    Title="Select language">
+                <Picker.Items>
+                    <x:String>English</x:String>
+                    <x:String>Hindi</x:String>
+                    <x:String>Spanish</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <!-- Button -->
+            <Button
+                Text="Save Preferences"
+                Clicked="OnSaveClicked"
+                HorizontalOptions="Fill"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+
+</ContentPage>
