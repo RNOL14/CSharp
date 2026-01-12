@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiCarousel.MainPage">
+
+
+    <VerticalStackLayout Spacing="20"
+            Padding="20">
+
+        <!-- 🔹 CarouselView -->
+        <CarouselView x:Name="ProductCarousel"
+                      HeightRequest="300"
+                      Loop="True">
+
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Spacing="10">
+
+                        <Image Source="{Binding Image}"
+                               HeightRequest="200"
+                               Aspect="AspectFit"/>
+
+                        <Label Text="{Binding Title}"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"/>
+
+                        <Label Text="{Binding Price, StringFormat='₹{0}'}"
+                               HorizontalOptions="Center"/>
+
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+
+        </CarouselView>
+
+        <!-- 🔹 IndicatorView -->
+        <IndicatorView x:Name="ProductIndicator"
+                       IndicatorColor="LightGray"
+                       SelectedIndicatorColor="Black"
+                       HorizontalOptions="Center"/>
+
+    </VerticalStackLayout>
+
+
+</ContentPage>

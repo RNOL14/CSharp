@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiClipping.MainPage">
+
+    <CarouselView ItemsSource="{Binding Products}"
+                  Margin="10">
+
+        <CarouselView.ItemsLayout>
+            <LinearItemsLayout Orientation="Horizontal"
+                               ItemSpacing="60"/>
+        </CarouselView.ItemsLayout>
+
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+
+                <VerticalStackLayout Spacing="20">
+
+                    <!-- IMAGE WITH ELLIPSE CLIPPING -->
+                    <Image Source="{Binding Image}"
+                           WidthRequest="300"
+                           HeightRequest="400"
+                           Aspect="AspectFill"
+                           HorizontalOptions="Center">
+
+                        <Image.Clip>
+                            <EllipseGeometry
+                                Center="150,200"
+                                RadiusX="150"
+                                RadiusY="200"/>
+                        </Image.Clip>
+
+                    </Image>
+
+                    <!-- PRODUCT DETAILS -->
+                    <HorizontalStackLayout Spacing="20">
+
+                        <VerticalStackLayout WidthRequest="200"
+                                             Spacing="10">
+                            <Label Text="{Binding Title}"
+                                   FontAttributes="Bold"/>
+
+                            <Label Text="{Binding Description}"
+                                   LineBreakMode="WordWrap"/>
+                        </VerticalStackLayout>
+
+                        <Label Text="{Binding Price, StringFormat='₹{0}'}"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="End"/>
+
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+
+    </CarouselView>
+</ContentPage>
