@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiTodoextended.MainPage">
+
+    <VerticalStackLayout Padding="20"
+                         Spacing="15">
+
+        <!-- Title Entry -->
+        <Entry x:Name="TitleEntry"
+               Placeholder="Enter a title"/>
+
+        <!-- Date Picker -->
+        <DatePicker x:Name="DueDatePicker"/>
+
+        <!-- Add Button -->
+        <Button Text="Add"
+                Clicked="OnAddClicked"/>
+
+        <!-- TODO LIST -->
+        <CollectionView ItemsSource="{Binding Todos}">
+            <CollectionView.ItemTemplate>
+
+                <DataTemplate>
+                    <SwipeView>
+
+                        <!-- LEFT SWIPE -->
+                        <SwipeView.LeftItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="Tomato"
+                                           Invoked="SwipeItem_Invoked"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+
+                        <!-- RIGHT SWIPE -->
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItem Text="Done"
+                                           BackgroundColor="LimeGreen"
+                                           Invoked="SwipeItem_Invoked"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <!-- CARD -->
+                        <Border Stroke="Purple"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 10"
+                                Padding="10"
+                                Margin="0,10">
+
+                            <!-- SHADOW -->
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                        Offset="10,10"
+                                        Radius="20"
+                                        Opacity="0.5"/>
+                            </Border.Shadow>
+
+                            <Grid ColumnDefinitions="Auto,*"
+                                  RowDefinitions="Auto,Auto">
+
+                                <CheckBox Grid.Row="0"
+                                          Grid.Column="0"
+                                          VerticalOptions="Center"/>
+
+                                <Label Text="{Binding Title}"
+                                       FontAttributes="Bold"
+                                       Grid.Row="0"
+                                       Grid.Column="1"/>
+
+                                <Label Text="{Binding Due, StringFormat='{0:dd MMM yyyy}'}"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       FontSize="12"/>
+
+                            </Grid>
+
+                        </Border>
+
+                    </SwipeView>
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+
+
+</ContentPage>
