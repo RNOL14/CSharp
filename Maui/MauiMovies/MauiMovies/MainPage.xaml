@@ -3,79 +3,68 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiMovies.MainPage">
 
-    <VerticalStackLayout Spacing="10"
-            Padding="30">
 
-        <!-- GENRE SELECTION -->
-        <Border Stroke="Black"
-                StrokeThickness="2"
-                StrokeShape="RoundRectangle 5">
+    <VerticalStackLayout Padding="30"
+            Spacing="20">
 
-            <VerticalStackLayout Padding="20">
+        <!-- GENRES -->
+        <Label Text="Genres"
+                FontSize="18"
+                FontAttributes="Bold"/>
 
-                <Label Text="Genres"/>
+        <FlexLayout
+            BindableLayout.ItemsSource="{Binding Genres}"
+            Wrap="Wrap"
+            Direction="Row"
+            JustifyContent="Start">
 
-                <FlexLayout
-                    BindableLayout.ItemsSource="{Binding Genres}"
-                    JustifyContent="SpaceEvenly"
-                    Wrap="Wrap">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Stroke="CadetBlue"
+                        StrokeShape="RoundRectangle 20"
+                        Padding="10"
+                        Margin="5"
+                        BackgroundColor="CadetBlue">
+                        <Label
+                            Text="{Binding Name}"
+                            TextColor="White"/>
+                    </Border>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </FlexLayout>
 
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <Border Stroke="CadetBlue"
-                                    StrokeThickness="2"
-                                    StrokeShape="RoundRectangle 15"
-                                    Padding="10"
-                                    BackgroundColor="CadetBlue">
-                                <Label Text="{Binding name}"
-                                       TextColor="White"/>
-                            </Border>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-
-                </FlexLayout>
-
-            </VerticalStackLayout>
-        </Border>
-
-        <!-- MOVIE LIST -->
+        <!-- MOVIES -->
         <ScrollView>
             <FlexLayout
                 BindableLayout.ItemsSource="{Binding Movies}"
-                JustifyContent="SpaceEvenly"
-                Wrap="Wrap">
+                Wrap="Wrap"
+                JustifyContent="SpaceEvenly">
 
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
+                        <VerticalStackLayout
+                            WidthRequest="160"
+                            Spacing="8"
+                            Margin="10">
 
-                        <VerticalStackLayout WidthRequest="200"
-                                             Margin="10"
-                                             Spacing="10">
+                            <Image
+                                Source="{Binding Poster}"
+                                HeightRequest="220"
+                                Aspect="AspectFill"/>
 
-                            <Image Source="{Binding poster_path}"
-                                   Aspect="AspectFit">
-                                <Image.Shadow>
-                                    <Shadow Opacity="0.6"
-                                            Offset="5,5"
-                                            Radius="20"/>
-                                </Image.Shadow>
-                            </Image>
+                            <Label
+                                Text="{Binding Title}"
+                                FontAttributes="Bold"
+                                LineBreakMode="TailTruncation"/>
 
-                            <HorizontalStackLayout>
-                                <Label Text="{Binding title}"
-                                       FontAttributes="Bold"
-                                       WidthRequest="150"
-                                       LineBreakMode="TailTruncation"/>
-                                <Label HorizontalOptions="EndAndExpand"
-                                       WidthRequest="50"
-                                       Text="{Binding vote_average, StringFormat='{0:N1}'}"/>
-                            </HorizontalStackLayout>
+                            <Label
+                                Text="{Binding Rating, StringFormat='⭐ {0:F1}'}"
+                                TextColor="Goldenrod"/>
 
                         </VerticalStackLayout>
-
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
-
             </FlexLayout>
         </ScrollView>
 

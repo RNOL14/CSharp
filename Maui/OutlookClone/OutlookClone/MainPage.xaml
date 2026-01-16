@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OutlookClone.MainPage">
+
+
+    <Grid RowDefinitions="50,40,*,80">
+
+        <!-- ================= ROW 0 : TITLE BAR ================= -->
+        <FlexLayout Grid.Row="0"
+                    BackgroundColor="{StaticResource Primary}"
+                    JustifyContent="SpaceBetween"
+                    AlignItems="Center"
+                    Padding="10">
+
+            <HorizontalStackLayout Spacing="10">
+
+                <Label Text="&#xfA38;"
+                       FontFamily="FluentFilled"
+                       TextColor="{StaticResource Primary}"
+                       BackgroundColor="White"
+                       WidthRequest="30"
+                       HeightRequest="30"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Large">
+                    <Label.Clip>
+                        <EllipseGeometry RadiusX="15"
+                                         RadiusY="15"
+                                         Center="15,15"/>
+                    </Label.Clip>
+                </Label>
+
+                <Label Text="Inbox"
+                       FontAttributes="Bold"
+                       FontSize="Large"
+                       TextColor="White"
+                       VerticalTextAlignment="Center"/>
+            </HorizontalStackLayout>
+
+            <Label Text="&#xfB26;"
+                   FontFamily="FluentRegular"
+                   TextColor="White"
+                   FontSize="Large"/>
+        </FlexLayout>
+
+        <!-- ================= ROW 1 : FILTER BAR ================= -->
+        <FlexLayout Grid.Row="1"
+                    BackgroundColor="{StaticResource Primary}"
+                    JustifyContent="SpaceBetween"
+                    Padding="10">
+
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Focused"
+                        TextColor="White"/>
+                <Switch IsToggled="True"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="&#xf408;"
+                       FontFamily="FluentRegular"
+                       TextColor="White"/>
+                <Label Text="Filter"
+                        TextColor="White"/>
+            </HorizontalStackLayout>
+        </FlexLayout>
+
+        <!-- ================= ROW 2 : COLLECTION VIEW ================= -->
+        <CollectionView Grid.Row="2"
+                        x:Name="MessageCollection">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="50,*,50"
+                          RowDefinitions="25,20,40"
+                          Padding="10">
+
+                        <Image Grid.RowSpan="3"
+                               WidthRequest="40"
+                               HeightRequest="40"
+                               Source="{Binding image}"
+                               Aspect="AspectFill">
+                            <Image.Clip>
+                                <EllipseGeometry RadiusX="20"
+                                                 RadiusY="20"
+                                                 Center="20,20"/>
+                            </Image.Clip>
+                        </Image>
+
+                        <Label Grid.Column="1"
+                               Grid.Row="0"
+                               Text="{Binding character}"
+                               FontAttributes="Bold"
+                               FontSize="18"/>
+
+                        <Label Grid.Column="1"
+                               Grid.Row="1"
+                               Text="Message"
+                               LineBreakMode="TailTruncation"/>
+
+                        <Label Grid.Column="1"
+                               Grid.Row="2"
+                               Grid.ColumnSpan="2"
+                               Text="{Binding quote}"
+                               LineBreakMode="WordWrap"
+                               TextColor="{StaticResource Tertiary}"/>
+
+                        <Label Grid.Column="2"
+                               Grid.Row="0"
+                               Text="Saturday"
+                               FontSize="12"
+                               TextColor="{StaticResource Tertiary}"/>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+        <!-- ================= LOADING INDICATOR ================= -->
+        <ActivityIndicator Grid.Row="2"
+                           x:Name="LoadingIndicator"
+                           Color="{StaticResource Primary}"
+                           IsRunning="True"
+                           IsVisible="False"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+
+        <!-- ================= FLOATING ACTION BUTTON ================= -->
+        <Button Grid.Row="2"
+                Text="+"
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White"
+                WidthRequest="60"
+                HeightRequest="60"
+                CornerRadius="30"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="20"/>
+
+        <!-- ================= ROW 3 : TAB BAR ================= -->
+        <Grid Grid.Row="3"
+              ColumnDefinitions="*,*,*"
+              BackgroundColor="{StaticResource Secondary}">
+
+            <VerticalStackLayout Grid.Column="0"
+                    HorizontalOptions="Center">
+                <Label Text="&#xf513;"
+                        FontFamily="FluentFilled"/>
+                <Label Text="Email"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1"
+                    HorizontalOptions="Center">
+                <Label Text="&#xfB26;"
+                        FontFamily="FluentRegular"/>
+                <Label Text="Search"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="2"
+                    HorizontalOptions="Center">
+                <Label Text="&#xf03de;"
+                        FontFamily="FluentRegular"/>
+                <Label Text="Calendar"/>
+            </VerticalStackLayout>
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

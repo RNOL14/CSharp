@@ -1,7 +1,8 @@
-namespace MauiMovies;
+namespace MauiMovies.Models;
 
 public class Genre
 {
-  public int id { get; set; }
-  public string name { get; set; }
+  public int Id { get; set; }
+  public string Name { get; set; } = string.Empty;
+  public bool Selected { get; set; }
 }

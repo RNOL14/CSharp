@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup
+  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+  x:Class="MauiMovies.GenreListPopup"
+  Size="400,500">
+
+  <VerticalStackLayout Padding="20"
+                       Spacing="15">
+
+    <Button
+      Text="Confirm"
+      Clicked="Confirm_Clicked"/>
+
+    <CollectionView
+      ItemsSource="{Binding Genres}"
+      SelectionMode="Multiple">
+
+      <CollectionView.ItemTemplate>
+        <DataTemplate>
+          <Label
+            Text="{Binding Name}"
+            FontSize="16"
+            Padding="10"/>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+
+    </CollectionView>
+
+  </VerticalStackLayout>
+</mct:Popup>

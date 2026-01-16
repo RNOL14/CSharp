@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiMovies.MainPage">
+
+    <VerticalStackLayout Padding="30"
+                         Spacing="20">
+
+        <!-- GENRE SECTION -->
+        <!-- GENRE SECTION -->
+        <Label
+            Text="Genres"
+            FontSize="18"
+            FontAttributes="Bold">
+
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ShowGenresCommand}"/>
+            </Label.GestureRecognizers>
+
+        </Label>
+
+        <FlexLayout
+            BindableLayout.ItemsSource="{Binding Genres}"
+            Wrap="Wrap"
+            Direction="Row"
+            JustifyContent="Start">
+
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Padding="10"
+                        Margin="5"
+                        BackgroundColor="CadetBlue"
+                        StrokeShape="RoundRectangle 20">
+
+                        <Label
+                            Text="{Binding Name}"
+                            TextColor="White"/>
+                    </Border>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </FlexLayout>
+
+        <!-- MOVIES SECTION -->
+        <ScrollView>
+            <FlexLayout
+                BindableLayout.ItemsSource="{Binding Movies}"
+                Wrap="Wrap"
+                JustifyContent="SpaceEvenly">
+
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout
+                            WidthRequest="160"
+                            Margin="10"
+                            Spacing="8">
+
+                            <Image
+                                Source="{Binding Poster}"
+                                HeightRequest="220"
+                                Aspect="AspectFill"/>
+
+                            <Label
+                                Text="{Binding Title}"
+                                FontAttributes="Bold"
+                                LineBreakMode="TailTruncation"/>
+
+                            <Label
+                                Text="{Binding Rating, StringFormat='⭐ {0:F1}'}"
+                                TextColor="Goldenrod"/>
+
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+
+            </FlexLayout>
+        </ScrollView>
+
+    </VerticalStackLayout>
+</ContentPage>

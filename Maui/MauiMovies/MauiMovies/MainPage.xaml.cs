@@ -1,64 +1,58 @@
 ﻿using System.Collections.ObjectModel;
-using System.Net.Http.Json;
+using MauiMovies.Models;
 
 namespace MauiMovies;
 
 public partial class MainPage : ContentPage
 {
-	string _apiKey = "c62a578c51a7f40b35c3809384a47acf";
-	string _baseUrl = "https://api.themoviedb.org/3/";
-	string _imageBaseUrl = "https://image.tmdb.org/t/p/w500";
-
-	TrendingMovies _movieList;
-	GenreList _genres;
-
-	public ObservableCollection<UserGenre> Genres { get; set; } = new();
-	public ObservableCollection<MovieResult> Movies { get; set; } = new();
-
-	HttpClient _httpClient;
+	public ObservableCollection<Genre> Genres { get; set; } = new();
+	public ObservableCollection<Movie> Movies { get; set; } = new();
 
 	public MainPage()
 	{
 		InitializeComponent();
 		BindingContext = this;
-		_httpClient = new HttpClient { BaseAddress = new Uri(_baseUrl) };
+		LoadStaticData();
 	}
 
-	protected override async void OnAppearing()
+	private void LoadStaticData()
 	{
-		base.OnAppearing();
+		// Static genres
+		Genres.Add(new Genre { Id = 1, Name = "Action" });
+		Genres.Add(new Genre { Id = 2, Name = "Comedy" });
+		Genres.Add(new Genre { Id = 3, Name = "Drama" });
 
-		_genres = await _httpClient.GetFromJsonAsync<GenreList>(
-				$"genre/movie/list?api_key={_apiKey}&language=en-US");
-
-		_movieList = await _httpClient.GetFromJsonAsync<TrendingMovies>(
-				$"trending/movie/week?api_key={_apiKey}&language=en-US");
-
-		foreach (var movie in _movieList.results)
+		// Static movies
+		Movies.Add(new Movie
 		{
-			movie.poster_path = $"{_imageBaseUrl}{movie.poster_path}";
-		}
+			Title = "Spider Hero",
+			Poster = "poster1.jpg",
+			Rating = 7.5,
+			GenreIds = new List<int> { 1 }
+		});
 
-		foreach (var genre in _genres.genres)
+		Movies.Add(new Movie
 		{
-			Genres.Add(new UserGenre
-			{
-				id = genre.id,
-				name = genre.name,
-				Selected = false
-			});
-		}
+			Title = "Funny Days",
+			Poster = "poster2.jpg",
+			Rating = 6.8,
+			GenreIds = new List<int> { 2 }
+		});
 
-		LoadFilteredMovies();
-	}
-
-	void LoadFilteredMovies()
-	{
-		Movies.Clear();
-
-		foreach (var movie in _movieList.results)
+		Movies.Add(new Movie
 		{
-			Movies.Add(movie);
-		}
+			Title = "Life Story",
+			Poster = "poster3.jpg",
+			Rating = 8.2,
+			GenreIds = new List<int> { 3 }
+		});
+
+		Movies.Add(new Movie
+		{
+			Title = "Action Comedy",
+			Poster = "poster4.jpg",
+			Rating = 7.9,
+			GenreIds = new List<int> { 1, 2 }
+		});
 	}
 }
