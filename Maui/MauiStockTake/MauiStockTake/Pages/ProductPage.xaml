@@ -1,0 +1,19 @@
+<ContentPage
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="MauiStockTake.Pages.ProductPage"
+       Title="Product">
+
+       <VerticalStackLayout
+              VerticalOptions="Center"
+              HorizontalOptions="Center"
+              Spacing="20">
+
+              <Label Text="{Binding ProductName}"
+                     FontSize="Title"/>
+
+              <Label Text="{Binding ManufacturerName}"
+                     FontSize="Subtitle"/>
+
+       </VerticalStackLayout>
+</ContentPage>

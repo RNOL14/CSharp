@@ -1,0 +1,15 @@
+<ContentPage
+  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="MauiStockTake.Pages.ReportPage"
+  Title="Reports">
+
+  <VerticalStackLayout
+    VerticalOptions="Center"
+    HorizontalOptions="Center">
+
+    <Label Text="Report Page"
+           FontSize="Title"/>
+
+  </VerticalStackLayout>
+</ContentPage>

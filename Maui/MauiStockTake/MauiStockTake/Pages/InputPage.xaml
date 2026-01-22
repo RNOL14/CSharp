@@ -1,0 +1,19 @@
+<ContentPage
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="MauiStockTake.Pages.InputPage"
+       Title="Input">
+
+       <VerticalStackLayout
+              Spacing="50"
+              VerticalOptions="Center"
+              HorizontalOptions="Center">
+
+              <Label Text="Input Page"
+                     FontSize="Title"/>
+
+              <Button Text="Go to Product"
+                      Clicked="Button_Clicked"/>
+       </VerticalStackLayout>
+
+</ContentPage>
