@@ -8,7 +8,7 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 	}
-
+	// push
 	private void OnCounterClicked(object? sender, EventArgs e)
 	{
 		count++;
