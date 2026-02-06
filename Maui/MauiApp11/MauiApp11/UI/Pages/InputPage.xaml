@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="MauiApp11.UI.Pages.InputPage"
+  Title="Input Page">
+
+  <Grid Padding="20"
+        RowDefinitions="*,3*,2*,2*,*">
+
+    <SearchBar
+      x:Name="ProductSearchBar"
+      Grid.Row="0"
+      BackgroundColor="White"
+      TextColor="Black"
+      SearchCommand="{Binding SearchProductsCommand}"
+      SearchCommandParameter="{Binding Text, Source={x:Reference ProductSearchBar}}"
+      Placeholder="Search for a product..."/>
+
+    <CollectionView
+      Grid.Row="1"
+      ItemsSource="{Binding SearchResults}"
+      SelectedItem="{Binding SelectedProduct}"
+      SelectionMode="Single"
+      Margin="20,0">
+
+      <CollectionView.ItemsLayout>
+        <LinearItemsLayout
+          Orientation="Vertical"
+          ItemSpacing="10"/>
+      </CollectionView.ItemsLayout>
+
+      <CollectionView.ItemTemplate>
+        <DataTemplate>
+          <VerticalStackLayout>
+            <Label
+              Text="{Binding Name}"
+              FontSize="Large"/>
+            <Label
+              Text="{Binding ManufacturerName}"
+              TextColor="Gray"/>
+          </VerticalStackLayout>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+
+    <ActivityIndicator
+      Grid.Row="1"
+      IsRunning="True"
+      IsVisible="{Binding IsLoading}"
+      HorizontalOptions="Center"
+      VerticalOptions="Center"/>
+
+    <Label
+      Grid.Row="2"
+      Text="{Binding Count}"
+      FontSize="Header"
+      HorizontalOptions="Center"
+      VerticalOptions="Center"/>
+
+    <Stepper
+      Grid.Row="3"
+      Value="{Binding Count}"
+      HorizontalOptions="Center"
+      VerticalOptions="Center"/>
+
+    <Button
+      Grid.Row="4"
+      Text="Add count"
+      Command="{Binding AddCountCommand}"/>
+
+  </Grid>
+</ContentPage>
