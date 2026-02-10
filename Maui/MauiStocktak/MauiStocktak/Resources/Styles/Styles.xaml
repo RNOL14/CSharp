@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- PAGE STYLE -->
+    <Style TargetType="Page">
+        <!-- IMPORTANT: use Background (Brush) so gradient works -->
+        <Setter Property="Background"
+                Value="{StaticResource BackgroundGradient}"/>
+    </Style>
+
+    <!-- BUTTON STYLE -->
+    <Style TargetType="Button">
+        <!-- Light mode Primary, Dark mode White -->
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}"/>
+
+        <!-- Text color -->
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Primary}}"/>
+
+        <!-- Book changes -->
+        <Setter Property="HeightRequest"
+                Value="50"/>
+        <Setter Property="CornerRadius"
+                Value="25"/>
+        <Setter Property="MinimumWidthRequest"
+                Value="100"/>
+    </Style>
+
+    <!-- ENTRY STYLE -->
+    <Style TargetType="Entry">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}"/>
+
+        <Setter Property="PlaceholderColor"
+                Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+    </Style>
+
+    <!-- COUNT LABEL STYLE (book listing 10.3) -->
+    <Style TargetType="Label"
+            x:Key="CountLabelStyle">
+        <Setter Property="FontSize"
+                Value="64"/>
+        <Setter Property="HorizontalOptions"
+                Value="Center"/>
+        <Setter Property="VerticalOptions"
+                Value="Center"/>
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+    </Style>
+
+</ResourceDictionary>

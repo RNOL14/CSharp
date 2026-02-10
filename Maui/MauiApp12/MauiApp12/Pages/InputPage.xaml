@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="MauiApp12.Pages.InputPage"
+  Title="Input">
+
+  <Grid RowDefinitions="Auto,Auto,*,Auto,Auto"
+      Padding="20"
+      RowSpacing="20">
+
+    <Grid ColumnDefinitions="*,Auto"
+        ColumnSpacing="12">
+      <SearchBar
+        Placeholder="Search products..."
+        Text="{Binding SearchText}"/>
+
+      <Button
+        Grid.Column="1"
+        Text="Search"
+        Command="{Binding SearchCommand}"/>
+    </Grid>
+
+    <CollectionView
+      Grid.Row="1"
+      ItemsSource="{Binding Products}"
+      SelectionMode="Single"
+      SelectedItem="{Binding SelectedProduct}"
+      HeightRequest="250">
+
+      <CollectionView.ItemTemplate>
+        <DataTemplate>
+          <VerticalStackLayout
+            Padding="12"
+            Style="{StaticResource ProductSelector}">
+
+            <Label
+              Text="{Binding ProductName}"
+              FontAttributes="Bold"
+              FontSize="16"/>
+
+            <Label
+              Text="{Binding ProductCategory}"
+              FontSize="12"
+              Opacity="0.7"/>
+          </VerticalStackLayout>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+
+    <Label
+      Grid.Row="2"
+      HorizontalOptions="Center"
+      FontSize="70"
+      Text="{Binding Count}"/>
+
+    <Stepper
+      Grid.Row="3"
+      HorizontalOptions="Center"
+      VerticalOptions="Center"
+      Value="{Binding Count}">
+
+      <Stepper.Triggers>
+        <DataTrigger
+          TargetType="Stepper"
+          Binding="{Binding SelectedProduct, TargetNullValue=''}"
+          Value="">
+          <Setter Property="IsEnabled"
+              Value="False"/>
+        </DataTrigger>
+      </Stepper.Triggers>
+
+    </Stepper>
+
+    <Button
+      Grid.Row="4"
+      Text="Add count"
+      Command="{Binding AddCountCommand}">
+
+      <Button.Triggers>
+        <DataTrigger
+          TargetType="Button"
+          Binding="{Binding Count}"
+          Value="0">
+          <Setter Property="IsEnabled"
+              Value="False"/>
+        </DataTrigger>
+      </Button.Triggers>
+
+    </Button>
+
+  </Grid>
+</ContentPage>

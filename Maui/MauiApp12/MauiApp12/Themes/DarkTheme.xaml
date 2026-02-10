@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+  <Color x:Key="PrimaryDark">#38BDF8</Color>
+  <Color x:Key="SecondaryDark">#FB923C</Color>
+
+  <Color x:Key="PrimaryDarkBackground">#0B1220</Color>
+  <Color x:Key="SecondaryDarkBackground">#1F2937</Color>
+
+  <!-- VSM Style -->
+  <Style TargetType="VerticalStackLayout"
+      x:Key="ProductSelector">
+    <Setter Property="VisualStateManager.VisualStateGroups">
+      <VisualStateGroupList>
+        <VisualStateGroup x:Name="CommonStates">
+          <VisualState x:Name="Normal"/>
+          <VisualState x:Name="Selected">
+            <VisualState.Setters>
+              <Setter Property="BackgroundColor"
+                  Value="{StaticResource SecondaryDark}"/>
+            </VisualState.Setters>
+          </VisualState>
+        </VisualStateGroup>
+      </VisualStateGroupList>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>

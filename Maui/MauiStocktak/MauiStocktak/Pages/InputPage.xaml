@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+  x:Class="MauiStocktak.Pages.InputPage"
+  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  Title="InputPage">
+
+  <Grid RowDefinitions="Auto,*,Auto,Auto"
+        Padding="30"
+        RowSpacing="25">
+
+    <!-- Search -->
+    <SearchBar Grid.Row="0"
+               Placeholder="Search for a product..."/>
+
+    <!-- Count Label -->
+    <Label Grid.Row="1"
+           Text="0"
+           Style="{StaticResource CountLabelStyle}"/>
+
+    <!-- Stepper buttons -->
+    <Grid Grid.Row="2"
+          ColumnDefinitions="Auto,Auto"
+          HorizontalOptions="Center"
+          ColumnSpacing="15">
+
+      <Button Text="-"/>
+      <Button Text="+"
+          Grid.Column="1"/>
+
+    </Grid>
+
+    <!-- Submit button -->
+    <Button Grid.Row="3"
+            Text="Add count"
+            HorizontalOptions="Fill"/>
+
+  </Grid>
+
+</ContentPage>
