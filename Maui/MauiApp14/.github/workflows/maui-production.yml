@@ -1,0 +1,34 @@
+name: MAUI Android Production Build
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build-android:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install MAUI workload
+        run: dotnet workload install maui
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Publish Android Release
+        run: dotnet publish MauiApp14/MauiApp14.csproj -c Release -f net8.0-android
+
+      - name: Upload Android build output
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-release
+          path: |
+            **/bin/Release/**/publish/**
